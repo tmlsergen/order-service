@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "e704f189-99c6-427b-905d-5a113445db8f",
+		"name": "Order Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5590177"
+	},
+	"item": [
+		{
+			"name": "Order Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://order-service.test/api/orders?filters[0][field]=status&filters[0][operator]==&filters[0][value]=pending&sort[field]=id&sort[direction]=desc&paging[page]=1&paging[limit]=3",
+					"protocol": "http",
+					"host": [
+						"order-service",
+						"test"
+					],
+					"path": [
+						"api",
+						"orders"
+					],
+					"query": [
+						{
+							"key": "filters[0][field]",
+							"value": "status"
+						},
+						{
+							"key": "filters[0][operator]",
+							"value": "="
+						},
+						{
+							"key": "filters[0][value]",
+							"value": "pending"
+						},
+						{
+							"key": "sort[field]",
+							"value": "id"
+						},
+						{
+							"key": "sort[direction]",
+							"value": "desc"
+						},
+						{
+							"key": "paging[page]",
+							"value": "1"
+						},
+						{
+							"key": "paging[limit]",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

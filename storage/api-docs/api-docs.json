@@ -1,0 +1,329 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Example for response examples value",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api": {},
+        "/api/orders": {
+            "get": {
+                "tags": [
+                    "orders"
+                ],
+                "description": "get orders",
+                "operationId": "955bb77a45ae173a485fadb8befed93f",
+                "parameters": [
+                    {
+                        "name": "filters",
+                        "in": "query",
+                        "description": "filters",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "field": {
+                                        "type": "string"
+                                    },
+                                    "operator": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "filters",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "field": {
+                                    "type": "string"
+                                },
+                                "direction": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "name": "paging",
+                        "in": "query",
+                        "description": "paging",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "page": {
+                                    "type": "integer"
+                                },
+                                "limit": {
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Order"
+                                            }
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The selected filters.0.operator is invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "example": "{filters.0.operator: [The selected filters.0.operator is invalid.]}"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Order": {
+                "title": "Orders",
+                "description": "Orders model",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "order_number": {
+                        "title": "order_number",
+                        "description": "order_number",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "user_id",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "status": {
+                        "title": "status",
+                        "description": "status",
+                        "type": "string",
+                        "example": "pending"
+                    },
+                    "total": {
+                        "title": "total",
+                        "description": "total",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "tax": {
+                        "title": "tax",
+                        "description": "tax",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "shipping": {
+                        "title": "shipping",
+                        "description": "shipping",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "shipping_address": {
+                        "title": "shipping_address",
+                        "description": "shipping_address",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "billing_address": {
+                        "title": "billing_address",
+                        "description": "billing_address",
+                        "type": "string",
+                        "example": "1"
+                    },
+                    "payment_method": {
+                        "title": "payment_method",
+                        "description": "payment_method",
+                        "type": "string",
+                        "example": "card"
+                    },
+                    "order_date": {
+                        "title": "order_date",
+                        "description": "order_date",
+                        "type": "string",
+                        "example": "2021-09-01 00:00:00"
+                    },
+                    "created_at": {
+                        "title": "created_at",
+                        "description": "created_at",
+                        "type": "string",
+                        "example": "2021-09-01 00:00:00"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "updated_at",
+                        "type": "string",
+                        "example": "2021-09-01 00:00:00"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    "products": {
+                        "title": "products",
+                        "description": "products",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Product"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Order"
+                }
+            },
+            "Product": {
+                "title": "Product",
+                "description": "Product model",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name",
+                        "type": "string",
+                        "example": "Product 1"
+                    },
+                    "unit_price": {
+                        "title": "unit_price",
+                        "description": "unit_price",
+                        "type": "decimal",
+                        "example": "1.00"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "description",
+                        "type": "string",
+                        "example": "Product 1 description"
+                    },
+                    "image": {
+                        "title": "image",
+                        "description": "image",
+                        "type": "string",
+                        "example": "https://via.placeholder.com/150"
+                    },
+                    "active": {
+                        "title": "active",
+                        "description": "active",
+                        "type": "boolean",
+                        "example": "true"
+                    },
+                    "created_at": {
+                        "title": "created_at",
+                        "description": "created_at",
+                        "type": "string",
+                        "example": "2021-01-01 00:00:00"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "updated_at",
+                        "type": "string",
+                        "example": "2021-01-01 00:00:00"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Product"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name",
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email",
+                        "type": "string",
+                        "example": "test@test.com"
+                    },
+                    "role": {
+                        "title": "role",
+                        "description": "role",
+                        "type": "string",
+                        "example": "customer"
+                    },
+                    "created_at": {
+                        "title": "created_at",
+                        "description": "created_at",
+                        "type": "string",
+                        "example": "2021-01-01 00:00:00"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "description": "updated_at",
+                        "type": "string",
+                        "example": "2021-01-01 00:00:00"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            }
+        }
+    }
+}
